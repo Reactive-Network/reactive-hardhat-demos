@@ -21,7 +21,7 @@ const ReactiveModule = buildModule("ReactiveModule", (m) => {
         topic_0,
         callback,
     ], {
-        value: 1000000000000000000n,
+        value: 1000000000000000000n, // 1 ether
     });
 
     return { reactiveContract };

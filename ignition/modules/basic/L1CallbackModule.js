@@ -2,13 +2,14 @@ require("dotenv").config();
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
 const L1CallbackModule = buildModule("L1CallbackModule", (m) => {
-    const sender = process.env.DEV_DESTINATION_CALLBACK_PROXY_ADDR;
-    if (!sender) {
-        throw new Error("Missing DEV_DESTINATION_CALLBACK_PROXY_ADDR in .env");
+    const callbackSender = process.env.DESTINATION_CALLBACK_PROXY_ADDR;
+    if (!callbackSender) {
+        throw new Error("Missing DESTINATION_CALLBACK_PROXY_ADDR in .env");
     }
-    console.log("DEV_DESTINATION_CALLBACK_PROXY_ADDR:", sender);
 
-    const callbackContract = m.contract("BasicDemoL1Callback", [sender]);
+    const callbackContract = m.contract("BasicDemoL1Callback", [callbackSender], {
+        value: 20000000000000000n, // 0.02 ether
+    });
 
     return { callbackContract };
 });
