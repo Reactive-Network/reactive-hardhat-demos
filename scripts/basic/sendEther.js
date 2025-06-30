@@ -7,12 +7,12 @@ async function main() {
 
     const tx = await wallet.sendTransaction({
         to: process.env.ORIGIN_CONTRACT,
-        value: ethers.parseEther("0.01"),
+        value: ethers.parseEther("0.001"),
     });
 
     console.log("Transaction hash:", tx.hash);
     await tx.wait();
-    console.log("Transaction confirmed");
+    console.log("✅ Transaction confirmed");
 }
 
 main().catch(console.error);

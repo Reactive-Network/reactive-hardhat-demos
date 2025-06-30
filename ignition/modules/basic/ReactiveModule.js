@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config({ override: true });
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
 const ReactiveModule = buildModule("ReactiveModule", (m) => {
