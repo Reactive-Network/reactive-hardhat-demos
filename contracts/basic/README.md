@@ -2,7 +2,7 @@
 
 ### Environment Variables
 
-Before proceeding further, configure these environment variables in the `.env`:
+Before proceeding further, configure these environment variables in the `.env` file:
 
 ```env
 DESTINATION_RPC=https://ethereum-sepolia-rpc.publicnode.com

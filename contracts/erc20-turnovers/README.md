@@ -2,7 +2,7 @@
 
 ### Environment Variables
 
-Before proceeding further, configure these environment variables in the `.env`:
+Before proceeding further, configure these environment variables in the `.env` file:
 
 ```env
 DESTINATION_RPC=https://ethereum-sepolia-rpc.publicnode.com
@@ -13,6 +13,7 @@ REACTIVE_RPC=https://kopli-rpc.rnk.dev/
 REACTIVE_PRIVATE_KEY=<insert private key>
 REACTIVE_CHAIN_ID=5318008
 SYSTEM_CONTRACT=0x0000000000000000000000000000000000fffFfF
+
 TURNOVER_L1_ADDR=<from Step 1>
 TURNOVER_REACTIVE_ADDR=<from Step 2>
 ```
