@@ -1,0 +1,12 @@
+# Node modules (Yarn or NPM dependencies)
+node_modules/
+
+# Output and cache directories
+artifacts/
+cache/
+
+# Hardhat Ignition deployment records
+ignition/deployments/
+
+# Local environment variables
+.env
