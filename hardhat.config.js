@@ -15,6 +15,11 @@ module.exports = {
       url: process.env.REACTIVE_RPC,
       accounts: [process.env.REACTIVE_PRIVATE_KEY],
       chainId: parseInt(process.env.REACTIVE_CHAIN_ID)
+    },
+    lasna: {
+      url: process.env.LASNA_RPC,
+      accounts: [process.env.LASNA_PRIVATE_KEY],
+      chainId: parseInt(process.env.LASNA_CHAIN_ID)
     }
   }
 };
