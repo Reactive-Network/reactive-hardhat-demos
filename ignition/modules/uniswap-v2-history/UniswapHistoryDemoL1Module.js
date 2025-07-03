@@ -9,7 +9,7 @@ const UniswapHistoryDemoL1Module = buildModule("UniswapHistoryDemoL1Module", (m)
     }
 
     const contract = m.contract("UniswapHistoryDemoL1", [callbackSender], {
-        value: 10000000000000000n, // 0.01 ether
+        value: 20000000000000000n, // 0.02 ether
     });
 
     return { contract };
