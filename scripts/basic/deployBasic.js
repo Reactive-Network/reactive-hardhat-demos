@@ -70,7 +70,7 @@ async function main() {
 
     console.log("\n🚀 Step 2: Deploying Reactive contract");
     execSync(
-        "npx hardhat ignition deploy ignition/modules/basic/ReactiveModule.js --network reactive",
+        "npx hardhat ignition deploy ignition/modules/basic/ReactiveModule.js --network lasna",
         { stdio: "inherit" }
     );
 
