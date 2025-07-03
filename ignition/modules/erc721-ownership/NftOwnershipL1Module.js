@@ -9,7 +9,7 @@ const NftOwnershipL1Module = buildModule("NftOwnershipL1Module", (m) => {
     }
 
     const nftOwnershipL1 = m.contract("NftOwnershipL1", [callbackSender], {
-        value: 10000000000000000n, // 0.01 ether
+        value: 20000000000000000n, // 0.02 ether
     });
 
     return { nftOwnershipL1 };
