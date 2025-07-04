@@ -16,7 +16,7 @@ const ApprovalServiceModule = buildModule("ApprovalServiceModule", (m) => {
         "ApprovalService",
         [callbackSenderAddr, subscriptionFee, gasCoefficient, extraGas],
         {
-            value: 80000000000000000n, // 0.08 ether
+            value: 20000000000000000n, // 0.02 ether
         }
     );
 

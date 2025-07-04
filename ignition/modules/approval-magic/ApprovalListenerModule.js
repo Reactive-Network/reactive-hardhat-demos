@@ -13,7 +13,7 @@ const ApprovalListenerModule = buildModule("ApprovalListenerModule", (m) => {
         "ApprovalListener",
         [BigInt(destinationChainId), approvalServiceAddr],
         {
-            value: 1000000000000000000n, // 1 ether
+            value: 100000000000000000n, // 0.1 ether
         }
     );
 
