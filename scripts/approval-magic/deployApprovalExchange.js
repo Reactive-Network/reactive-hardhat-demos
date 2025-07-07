@@ -75,9 +75,16 @@ async function approve(tokenAddr, spenderAddr) {
 
     const amount = ethers.parseEther("0.1");
     console.log("📨 Approving token transfer...");
-    const tx = await contract.approve(spenderAddr, amount);
-    await tx.wait();
-    console.log("✅ Approval complete.");
+
+    try {
+        const tx = await contract.approve(spenderAddr, amount);
+        console.log("➡️ Sent:", tx.hash);
+        await tx.wait();
+        console.log("✅ Approval complete.");
+    } catch (err) {
+        console.error("❌ Approval failed:", err);
+        throw err;
+    }
 }
 
 function sleep(ms) {
