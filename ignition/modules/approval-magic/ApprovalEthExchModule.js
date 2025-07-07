@@ -10,7 +10,7 @@ const ApprovalEthExchModule = buildModule("ApprovalEthExchModule", (m) => {
     }
 
     const contract = m.contract("ApprovalEthExch", [approvalServiceAddr, tokenAddr], {
-        value: 10000000000000000n // 0.01 ether
+        value: 20000000000000000n // 0.02 ether
     });
 
     return { contract };
