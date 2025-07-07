@@ -110,8 +110,8 @@ async function main() {
     console.log("🚀 Step 3: Subscribe Swap contract...");
     await subscribe(SWAP_ADDR);
 
-    console.log("⏳ Waiting 30 seconds for subscription propagation...");
-    await sleep(30000);
+    console.log("⏳ Waiting 40 seconds for subscription propagation...");
+    await sleep(40000);
 
     console.log("🚀 Step 4: Approving TOKEN1 for Swap contract...");
     await approve(TOKEN1_ADDR, SWAP_ADDR);
