@@ -1,26 +1,17 @@
-```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalServiceModule.js --network sepolia
-```
+### Deploy Basic Demo
+
+CLIENT_WALLET=<insert wallet address>
+
 
 ```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalListenerModule.js --network reactive
+node scripts/approval-magic/deployApprovalExchange.js
 ```
 
-```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalDemoTokenModule.js --network sepolia
-```
 
 ```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalEthExchModule.js --network sepolia
+node scripts/approval-magic/deployApprovalSwap.js
 ```
 
-```bash
-npx hardhat run scripts/approval-magic/subscribeExchange.js --network sepolia
-```
-
-```bash
-npx hardhat run scripts/approval-magic/approveTokenTransfer.js --network sepolia
-```
 
 ## Magic Swap
 
