@@ -73,9 +73,9 @@ async function approve(tokenAddr, spenderAddr) {
     const abi = ["function approve(address spender, uint256 amount) public returns (bool)"];
     const contract = new ethers.Contract(tokenAddr, abi, wallet);
 
-    const amount = ethers.parseEther("0.1");
-    console.log("📨 Approving token transfer...");
+    const amount = 1000n; // 1000 wei
 
+    console.log("📨 Approving token transfer...");
     try {
         const tx = await contract.approve(spenderAddr, amount);
         console.log("➡️ Sent:", tx.hash);
@@ -116,8 +116,8 @@ async function main() {
     console.log("🚀 Step 5: Subscribe Exchange...");
     await subscribe(EXCH_ADDR);
 
-    console.log("⏳ Waiting 30 seconds for subscription propagation...");
-    await sleep(30000);
+    console.log("⏳ Waiting 40 seconds for subscription propagation...");
+    await sleep(40000);
 
     console.log("🚀 Step 6: Approve Token for Exchange...");
     await approve(TOKEN_ADDR, EXCH_ADDR);
