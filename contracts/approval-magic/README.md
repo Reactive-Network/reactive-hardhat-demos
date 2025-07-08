@@ -7,35 +7,13 @@ CLIENT_WALLET=<insert wallet address>
 node scripts/approval-magic/deployApprovalExchange.js
 ```
 
+```bash
+rm -rf ignition/deployments/chain-11155111
+rm -rf ignition/deployments/chain-5318007
+```
 
 ```bash
 node scripts/approval-magic/deployApprovalSwap.js
 ```
 
 
-## Magic Swap
-
-```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalTokensModule.js --network sepolia
-```
-
-```bash
-npx hardhat run scripts/approval-magic/createPair.js --network sepolia
-```
-
-```bash
-npx hardhat run scripts/approval-magic/addLiquidityAndMint.js --network sepolia
-```
-
-```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalMagicSwapModule.js --network sepolia
-```
-
-
-```bash
-npx hardhat run scripts/approval-magic/subscribeSwap.js --network sepolia
-```
-
-```bash
-npx hardhat run scripts/approval-magic/approveTokenToSwap.js --network sepolia
-```
