@@ -5,7 +5,7 @@ const StopOrderReactiveModule = buildModule("StopOrderReactiveModule", (m) => {
     const pair = process.env.UNISWAP_V2_PAIR_ADDR;
     const callback = process.env.CALLBACK_ADDR;
     const client = process.env.CLIENT_WALLET;
-    const direction = true; // change to false if needed
+    const direction = true;
     const denominator = 1000;
     const numerator = 1234;
 
@@ -21,7 +21,7 @@ const StopOrderReactiveModule = buildModule("StopOrderReactiveModule", (m) => {
         denominator,
         numerator,
     ], {
-        value: 10000000000000000n // 0.01 ether
+        value: 1000000000000000n // 0.1 ether
     });
 
     return { stopOrder };
