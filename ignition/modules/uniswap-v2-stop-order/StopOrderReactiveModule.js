@@ -21,7 +21,7 @@ const StopOrderReactiveModule = buildModule("StopOrderReactiveModule", (m) => {
         denominator,
         numerator,
     ], {
-        value: 1000000000000000n // 0.1 ether
+        value: 100000000000000000n // 0.1 ether
     });
 
     return { stopOrder };
