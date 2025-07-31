@@ -14,7 +14,7 @@ const StopOrderCallbackModule = buildModule("StopOrderCallbackModule", (m) => {
         [callbackSender, routerAddress],
         {
             id: "UniswapStopOrderCallback",
-            value: 30000000000000000n // 0.03 ether
+            value: 20000000000000000n // 0.02 ether
         }
     );
 
