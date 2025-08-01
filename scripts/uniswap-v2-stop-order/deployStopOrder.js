@@ -126,7 +126,7 @@ async function main() {
     const {REACTIVE_ADDR} = extractLasnaAddress();
     updateEnv({REACTIVE_ADDR});
 
-    console.log("🔐 Step 7: Authorize CALLBACK to spend TOKEN1 and execute swap...");
+    console.log("🔐 Step 7: Authorize CALLBACK to spend TOKEN0 and execute swap...");
 
     const approveAbi = [
         "function approve(address spender, uint256 amount) external returns (bool)",
@@ -153,16 +153,16 @@ async function main() {
         console.log("✅ CALLBACK already approved");
     }
 
-    console.log("💸 Transferring TOKEN0 to Uniswap Pair...");
+    console.log("💸 Transferring TOKEN0 to Uniswap Pair to set swap ratio...");
     await (await token0Contract.transfer(pairAddr, transferAmount)).wait();
     console.log("✅ Transferred TOKEN0");
 
-    console.log("🔁 Executing swap on Uniswap Pair...");
+    console.log("🔁 Executing swap on Uniswap Pair: requesting 0.005 TOKEN1...");
     const amount1Out = ethers.parseEther("0.005");
     const data = "0x";
-    await (await pairContract.swap(0, ethers.parseEther("0.005"), client, data)).wait();
+    await (await pairContract.swap(0, amount1Out, client, data)).wait();
 
-    console.log("✅ Swap executed: TOKEN0 sent to client");
+    console.log("✅ Swap executed: TOKEN1 sent to client, CALLBACK will pull TOKEN0 from client");
 
     console.log("🎉 StopOrderDemo deployment complete!");
     console.log("\n--- Addresses ---");
