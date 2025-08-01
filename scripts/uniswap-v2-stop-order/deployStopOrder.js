@@ -120,7 +120,7 @@ async function main() {
     await (await pair.mint(client)).wait();
     console.log("✅ LP tokens minted");
 
-    console.log("🚀 Step 6: Deploy StopOrderReactive on Lasna...");
+    console.log("🚀 Step 6: Deploy reactive contract on Lasna...");
     execSync("npx hardhat ignition deploy ignition/modules/uniswap-v2-stop-order/StopOrderReactiveModule.js --network lasna", {stdio: "inherit"});
 
     const {REACTIVE_ADDR} = extractLasnaAddress();
@@ -158,9 +158,10 @@ async function main() {
     console.log("✅ Transferred TOKEN0");
 
     console.log("🔁 Executing swap on Uniswap Pair...");
-    const amount0Out = ethers.parseEther("0.005");
+    const amount1Out = ethers.parseEther("0.005");
     const data = "0x";
-    await (await pairContract.swap(amount0Out, 0, client, data)).wait();
+    await (await pairContract.swap(0, ethers.parseEther("0.005"), client, data)).wait();
+
     console.log("✅ Swap executed: TOKEN0 sent to client");
 
     console.log("🎉 StopOrderDemo deployment complete!");
