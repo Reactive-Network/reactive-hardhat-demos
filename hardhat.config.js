@@ -1,25 +1,20 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("@nomicfoundation/hardhat-ignition");
-require('dotenv').config({ override: true });
+require('dotenv').config();
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.28",
   networks: {
     sepolia: {
-      url: process.env.DESTINATION_RPC,
-      accounts: [process.env.DESTINATION_PRIVATE_KEY],
-      chainId: parseInt(process.env.DESTINATION_CHAIN_ID)
-    },
-    reactive: {
-      url: process.env.REACTIVE_RPC,
-      accounts: [process.env.REACTIVE_PRIVATE_KEY],
-      chainId: parseInt(process.env.REACTIVE_CHAIN_ID)
+      url: "https://ethereum-sepolia-rpc.publicnode.com",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 11155111
     },
     lasna: {
-      url: process.env.LASNA_RPC,
-      accounts: [process.env.LASNA_PRIVATE_KEY],
-      chainId: parseInt(process.env.LASNA_CHAIN_ID)
+      url: "https://lasna-rpc.rnk.dev/",
+      accounts: [process.env.PRIVATE_KEY],
+      chainId: 5318007
     }
   }
 };
