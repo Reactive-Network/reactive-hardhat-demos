@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const CronDemoModule = buildModule("CronDemoModule", (m) => {
