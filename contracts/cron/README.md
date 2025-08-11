@@ -16,13 +16,13 @@ npx hardhat ignition deploy ./ignition/modules/cron/CronDemoModule.ts --network 
 
 ### Step 2 — Cron Pause (Optional)
 
-To pause the cron subscription, run this command:
+To pause the contract:
 
 ```bash
 npx hardhat run scripts/cron/pauseCron.ts --network lasna
 ```
 
-To resume the cron subscription, run this command:
+To resume the contract:
 
 ```bash
 npx hardhat run scripts/cron/resumeCron.ts --network lasna
