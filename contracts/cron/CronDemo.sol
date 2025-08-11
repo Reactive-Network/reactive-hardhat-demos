@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity >=0.8.0;
 
-import '../../../lib/reactive-lib/src/interfaces/ISystemContract.sol';
-import '../../../lib/reactive-lib/src/abstract-base/AbstractPausableReactive.sol';
+import 'lib/reactive-lib/src/interfaces/ISystemContract.sol';
+import 'lib/reactive-lib/src/abstract-base/AbstractPausableReactive.sol';
 
 contract BasicCronContract is AbstractPausableReactive {
     uint256 public CRON_TOPIC;
