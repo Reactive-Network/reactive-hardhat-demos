@@ -25,13 +25,13 @@ async function main(): Promise<void> {
         throw new Error(`UniswapHistoryL1 address not found in deployed_addresses.json`);
     }
 
-    const pairContract: string = "0x85b6E66594C2DfAf7DC83b1a25D8FAE1091AF063";
+    const pair: string = "0x85b6E66594C2DfAf7DC83b1a25D8FAE1091AF063";
     const blockNumber: number = 6843582;
-    const abi: string[] = ["function request(address,uint256) external"];
+    const abi: string[] = ["function request(address pair, uint256 blockNumber) external"];
     const [signer] = await ethers.getSigners();
     const historyL1 = new ethers.Contract(uniswapHistoryL1, abi, signer);
 
-    const tx = await historyL1.request(pairContract, blockNumber, {
+    const tx = await historyL1.request(pair, blockNumber, {
         gasLimit: 1000000n,
     });
     console.log(`Transaction sent: ${tx.hash}`);
