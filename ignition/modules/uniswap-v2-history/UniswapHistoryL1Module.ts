@@ -1,7 +1,7 @@
 require("dotenv").config();
 const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
 
-const UniswapHistoryDemoL1Module = buildModule("UniswapHistoryDemoL1Module", (m) => {
+const UniswapHistoryL1Module = buildModule("UniswapHistoryL1Module", (m) => {
     const callbackSender = process.env.DESTINATION_CALLBACK_PROXY_ADDR;
 
     if (!callbackSender) {
@@ -15,4 +15,4 @@ const UniswapHistoryDemoL1Module = buildModule("UniswapHistoryDemoL1Module", (m)
     return { contract };
 });
 
-module.exports = UniswapHistoryDemoL1Module;
+module.exports = UniswapHistoryL1Module;

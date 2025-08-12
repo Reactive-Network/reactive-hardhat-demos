@@ -84,7 +84,7 @@ async function pauseReactiveContract() {
 
 async function main() {
     console.log("🚀 Step 1: Deploying UniswapHistoryDemoL1 to Sepolia...");
-    execSync("npx hardhat ignition deploy ignition/modules/uniswap-v2-history/UniswapHistoryDemoL1Module.js --network sepolia", {
+    execSync("npx hardhat ignition deploy ignition/modules/uniswap-v2-history/UniswapHistoryL1Module.ts --network sepolia", {
         stdio: "inherit"
     });
 
@@ -94,7 +94,7 @@ async function main() {
     console.log("→ UNISWAP_L1_ADDR:", UNISWAP_L1_ADDR);
 
     console.log("\n🚀 Step 2: Deploying UniswapHistoryDemoReactive to Lasna...");
-    execSync("npx hardhat ignition deploy ignition/modules/uniswap-v2-history/UniswapHistoryDemoReactiveModule.js --network lasna", {
+    execSync("npx hardhat ignition deploy ignition/modules/uniswap-v2-history/UniswapHistoryReactiveModule.ts --network lasna", {
         stdio: "inherit"
     });
 

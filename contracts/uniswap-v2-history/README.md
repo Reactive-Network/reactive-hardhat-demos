@@ -1,36 +1,37 @@
 ## Deployment & Testing
 
-### Environment Variables
-
-Before proceeding further, configure these environment variables in the `.env` file:
+Before proceeding further, add the private key to the `.env` file:
 
 ```env
-DESTINATION_RPC=https://ethereum-sepolia-rpc.publicnode.com
-DESTINATION_PRIVATE_KEY=<insert private key>
-DESTINATION_CHAIN_ID=11155111
-DESTINATION_CALLBACK_PROXY_ADDR=0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA
-LASNA_RPC=
-LASNA_PRIVATE_KEY=<insert private key>
-LASNA_CHAIN_ID=5318007
-SYSTEM_CONTRACT=0x0000000000000000000000000000000000fffFfF
-ACTIVE_PAIR_ADDR=0x85b6E66594C2DfAf7DC83b1a25D8FAE1091AF063
-BLOCK_NUMBER=6843582
+PRIVATE_KEY=<insert private key>
 ```
 
-### Deploy Uniswap History Demo
+Deploy the callback contract to Sepolia:
 
 ```bash
-node scripts/uniswap-v2-history/deployUniswapHistory.js
-````
-
-The reactive contract will be paused at the end of the script. Should you need to resume it, run:
-
-```bash
-npx hardhat run scripts/uniswap-v2-history/resumeUniswapReactive.js --network lasna
+npx hardhat ignition deploy ./ignition/modules/uniswap-v2-history/UniswapHistoryL1Module.ts --network sepolia
 ```
 
-To pause the reactive contract again:
+Deploy the reactive contract to Lasna:
 
 ```bash
-npx hardhat run scripts/uniswap-v2-history/pauseUniswapReactive.js --network lasna
+npx hardhat ignition deploy ./ignition/modules/uniswap-v2-history/UniswapHistoryReactiveModule.ts --network lasna
+```
+
+Request the Uniswap pair history (should result in a callback to Sepolia):
+
+```bash
+npx hardhat run scripts/uniswap-v2-history/requestUniswapHistory.ts --network sepolia
+```
+
+Pause the reactive contract:
+
+```bash
+npx hardhat run scripts/uniswap-v2-history/pauseUniswapReactive.ts --network lasna
+```
+
+Resume the reactive contract if needed:
+
+```bash
+npx hardhat run scripts/uniswap-v2-history/resumeUniswapReactive.ts --network lasna
 ```

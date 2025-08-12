@@ -18,7 +18,7 @@ Deploy the reactive contract to Lasna:
 npx hardhat ignition deploy ./ignition/modules/erc721-ownership/NftOwnershipReactiveModule.ts --network lasna
 ```
 
-Request the NFT owwnership (should result in a callback to Sepolia):
+Request the NFT ownership (should result in a callback to Sepolia):
 
 ```bash
 npx hardhat run scripts/erc721-ownership/requestOwnership.ts --network sepolia
