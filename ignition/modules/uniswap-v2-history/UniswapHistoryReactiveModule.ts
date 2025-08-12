@@ -1,18 +1,41 @@
-require("dotenv").config();
-const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
+import fs from "fs";
+import path from "path";
 
-const UniswapHistoryReactiveModule = buildModule("UniswapHistoryReactiveModule", (m) => {
-    const l1Address = process.env.UNISWAP_L1_ADDR;
+const addressesPath = path.resolve(
+    __dirname,
+    "../../deployments/chain-11155111/deployed_addresses.json"
+);
 
-    if (!l1Address) {
-        throw new Error("Missing UNISWAP_L1_ADDR in .env file");
+interface DeployedAddresses {
+    [key: string]: string;
+}
+
+let deployedAddresses: DeployedAddresses = {};
+try {
+    const jsonRaw = fs.readFileSync(addressesPath, "utf8");
+    deployedAddresses = JSON.parse(jsonRaw) as DeployedAddresses;
+} catch (e) {
+    if (e instanceof Error) {
+        console.warn(`⚠️ Could not load deployed addresses from ${addressesPath}: ${e.message}`);
+    } else {
+        console.warn(`⚠️ Could not load deployed addresses from ${addressesPath}: Unknown error`);
     }
+}
 
-    const reactiveContract = m.contract("UniswapHistoryDemoReactive", [l1Address], {
-        value: 1000000000000000000n, // 1 ether
+const ReactiveModule = buildModule("ReactiveModule", (m) => {
+    const uniswapHistoryL1: string  = deployedAddresses["UniswapHistoryL1Module#UniswapHistoryDemoL1"];
+
+    if (!uniswapHistoryL1) {
+        throw new Error(
+            "Required deployed contract address not found in deployed_addresses.json"
+        );
+    }
+    const reactiveContract = m.contract("UniswapHistoryDemoReactive", [uniswapHistoryL1], {
+        value: 10000000000000000000n, // 10 REACT
     });
 
     return { reactiveContract };
 });
 
-module.exports = UniswapHistoryReactiveModule;
+export default ReactiveModule;
