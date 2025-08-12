@@ -1,18 +1,13 @@
-require("dotenv").config();
-const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const UniswapHistoryL1Module = buildModule("UniswapHistoryL1Module", (m) => {
-    const callbackSender = process.env.DESTINATION_CALLBACK_PROXY_ADDR;
+    const callbackProxy: string = "0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA";
 
-    if (!callbackSender) {
-        throw new Error("Missing DESTINATION_CALLBACK_PROXY_ADDR in .env file");
-    }
-
-    const contract = m.contract("UniswapHistoryDemoL1", [callbackSender], {
+    const uniswapHistoryL1 = m.contract("UniswapHistoryL1", [callbackProxy], {
         value: 20000000000000000n, // 0.02 ether
     });
 
-    return { contract };
+    return { uniswapHistoryL1 };
 });
 
-module.exports = UniswapHistoryL1Module;
+export default UniswapHistoryL1Module;
