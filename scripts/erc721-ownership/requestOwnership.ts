@@ -20,18 +20,18 @@ async function main(): Promise<void> {
         fs.readFileSync(addressesPath, "utf8")
     );
 
-    const tokenTurnoverL1: string =
-        addresses["TokenTurnoverL1Module#TokenTurnoverL1"];
-    if (!tokenTurnoverL1) {
-        throw new Error(`TokenTurnoverL1 address not found in deployed_addresses.json`);
+    const nftOwnershipL1: string = addresses["NftOwnershipL1Module#NftOwnershipL1"];
+    if (!nftOwnershipL1) {
+        throw new Error(`NftOwnershipL1 address not found in deployed_addresses.json`);
     }
 
-    const usdtContract: string = "0xaA8E23Fb1079EA71e0a56F48a2aA51851D8433D0";
-    const abi: string[] = ["function request(address token) external"];
+    const nftContract: string = "0x92eFBC2F5208b8610E57c52b9E49F7189048900F";
+    const nftId: number = 129492;
+    const abi: string[] = ["function request(address token, uint256 tokenId) external"];
     const [signer] = await ethers.getSigners();
-    const turnoverL1 = new ethers.Contract(tokenTurnoverL1, abi, signer);
+    const ownershipL1 = new ethers.Contract(nftOwnershipL1, abi, signer);
 
-    const tx = await turnoverL1.request(usdtContract, {
+    const tx = await ownershipL1.request(nftContract, nftId, {
         gasLimit: 1000000n,
     });
     console.log(`Transaction sent: ${tx.hash}`);
