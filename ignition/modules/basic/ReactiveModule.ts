@@ -27,8 +27,7 @@ const ReactiveModule = buildModule("ReactiveModule", (m) => {
     const systemContract: string = "0x0000000000000000000000000000000000fffFfF";
     const originChainId: number = 11155111;
     const destinationChainId: number = 11155111;
-    const topic_0: string =
-        "0x8cabf31d2b1b11ba52dbb302817a3c9c83e4b2a5194d35121ab1354d69f6a4cb";
+    const topic_0: string = "0x8cabf31d2b1b11ba52dbb302817a3c9c83e4b2a5194d35121ab1354d69f6a4cb";
 
     const originContract = deployedAddresses["OriginCallbackModule#BasicDemoL1Contract"];
     const callbackContract = deployedAddresses["OriginCallbackModule#BasicDemoL1Callback"];

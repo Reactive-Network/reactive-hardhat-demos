@@ -23,12 +23,13 @@ npx hardhat ignition deploy ./ignition/modules/erc20-turnovers/TokenTurnoverL1Mo
 ```
 
 
-
 ```bash
 npx hardhat ignition deploy ./ignition/modules/erc20-turnovers/TokenTurnoverReactiveModule.ts --network lasna
 ```
 
-
+```bash
+npx hardhat run scripts/erc20-turnovers/requestTurnovers.ts --network sepolia
+```
 
 
 The reactive contract will be paused at the end of the script. Should you need to resume it, run:

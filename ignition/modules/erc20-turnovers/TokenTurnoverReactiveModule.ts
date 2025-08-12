@@ -24,7 +24,7 @@ try {
 }
 
 const ReactiveModule = buildModule("ReactiveModule", (m) => {
-    const tokenTurnoverL1 = deployedAddresses["TokenTurnoverL1Module#TokenTurnonverL1"];
+    const tokenTurnoverL1 = deployedAddresses["TokenTurnoverL1Module#TokenTurnoverL1"];
 
     if (!tokenTurnoverL1) {
         throw new Error(
@@ -38,7 +38,7 @@ const ReactiveModule = buildModule("ReactiveModule", (m) => {
             tokenTurnoverL1
         ],
         {
-            value: 100000000000000000n, // 0.1 REACT
+            value: 10000000000000000000n, // 10 REACT
         }
     );
 
