@@ -1,4 +1,4 @@
-const { buildModule } = require("@nomicfoundation/hardhat-ignition/modules");
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
 const ApprovalDemoTokenModule = buildModule("ApprovalDemoTokenModule", (m) => {
     const token = m.contract("ApprovalDemoToken", ["FTW", "FTW"]);
@@ -6,4 +6,4 @@ const ApprovalDemoTokenModule = buildModule("ApprovalDemoTokenModule", (m) => {
     return { token };
 });
 
-module.exports = ApprovalDemoTokenModule;
+export default ApprovalDemoTokenModule;

@@ -1,19 +1,35 @@
-### Deploy Basic Demo
 
-CLIENT_WALLET=<insert wallet address>
 
 
 ```bash
-node scripts/approval-magic/deployApprovalExchange.js
+npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalServiceModule.ts --network sepolia
 ```
+
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalDemoTokenModule.ts --network sepolia
+```
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalEthExchModule.ts --network sepolia
+```
+
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalListenerModule.ts --network lasna
+```
+
+
+```bash
+npx hardhat run scripts/approval-magic/subscribeApproveExchange.ts --network sepolia
+```
+
 
 ```bash
 rm -rf ignition/deployments/chain-11155111
 rm -rf ignition/deployments/chain-5318007
 ```
 
-```bash
-node scripts/approval-magic/deployApprovalSwap.js
-```
+
 
 
