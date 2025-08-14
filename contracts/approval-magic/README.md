@@ -5,24 +5,23 @@
 npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalServiceModule.ts --network sepolia
 ```
 
-
 ```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalDemoTokenModule.ts --network sepolia
+npx hardhat ignition deploy ./ignition/modules/approval-magic/ExchangeModule.ts --network sepolia
 ```
-
-```bash
-npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalEthExchModule.ts --network sepolia
-```
-
 
 ```bash
 npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalListenerModule.ts --network lasna
 ```
 
-
 ```bash
 npx hardhat run scripts/approval-magic/subscribeApproveExchange.ts --network sepolia
 ```
+
+
+```bash
+npx hardhat ignition deploy ./ignition/modules/approval-magic/TokensModule.ts --network sepolia
+```
+
 
 
 ```bash

@@ -23,7 +23,7 @@ try {
     }
 }
 
-const ApprovalEthExchModule = buildModule("ApprovalEthExchModule", (m) => {
+const ExchangeModule = buildModule("ExchangeModule", (m) => {
     const approvalService = deployedAddresses["ApprovalServiceModule#ApprovalService"];
     const token = deployedAddresses["ApprovalDemoTokenModule#ApprovalDemoToken"];
 
@@ -44,5 +44,5 @@ const ApprovalEthExchModule = buildModule("ApprovalEthExchModule", (m) => {
     return { exchangeContract };
 });
 
-export default ApprovalEthExchModule;
+export default ExchangeModule;
 
