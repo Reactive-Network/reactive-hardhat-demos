@@ -10,7 +10,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         "ApprovalService",
         [callbackProxy, subscriptionFee, gasCoefficient, extraGas],
         {
-            value: 200000000000000n, // 0.0002 ether
+            value: 20000000000000000n, // 0.02 ether
         }
     );
 
@@ -32,13 +32,13 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
     const exchangeContract = m.contract(
         "ApprovalEthExch",
         [approvalService, exchangeToken],
-        { value: 100000000000000n } // 0.0001 ether
+        { value: 10000000000000000n } // 0.01 ether
     );
 
     const swapContract = m.contract(
         "ApprovalMagicSwap",
         [approvalService, swapToken1, swapToken2],
-        { value: 100000000000000n } // 0.0001 ether
+        { value: 10000000000000000n } // 0.01 ether
     );
 
     return { approvalService, exchangeToken, swapToken1, swapToken2, exchangeContract, swapContract };
