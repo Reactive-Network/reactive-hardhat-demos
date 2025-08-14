@@ -41,6 +41,5 @@ npx hardhat run scripts/approval-magic/subscribeApprove.ts --network sepolia
 Should you need to run the demo anew, remove the old deployment data before starting over:
 
 ```bash
-rm -rf ignition/deployments/chain-11155111
-rm -rf ignition/deployments/chain-5318007
+rm -rf ignition/deployments/chain-{11155111,5318007}
 ```
