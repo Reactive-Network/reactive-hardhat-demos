@@ -23,26 +23,28 @@ try {
     }
 }
 
-const ExchangeModule = buildModule("ExchangeModule", (m) => {
-    const approvalService = deployedAddresses["ApprovalServiceTokensModule#ApprovalService"];
-    const exchangeToken = deployedAddresses["ApprovalServiceTokensModule#ExchangeToken"];
+const ReactiveModule = buildModule("ReactiveModule", (m) => {
+    const approvalService = deployedAddresses["SepoliaModule#ApprovalService"];
+    const destinationChainId = 11155111;
 
-    if (!approvalService || !exchangeToken) {
+    if (!approvalService) {
         throw new Error(
-            "Required deployed contract addresses not found in deployed_addresses.json"
+            "Required deployed contract address not found in deployed_addresses.json"
         );
     }
 
-    const exchangeContract = m.contract(
-        "ApprovalEthExch",
-        [approvalService, exchangeToken],
+    const reactiveContract = m.contract(
+        "ApprovalListener",
+        [
+            destinationChainId,
+            approvalService
+        ],
         {
-            value: 200000000000000n // 0.0002 ether
+            value: 100000000000000000n, // 0.1 REACT
         }
     );
 
-    return { exchangeContract };
+    return { reactiveContract };
 });
 
-export default ExchangeModule;
-
+export default ReactiveModule;
