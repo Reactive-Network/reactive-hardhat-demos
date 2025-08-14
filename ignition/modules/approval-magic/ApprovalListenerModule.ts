@@ -24,8 +24,8 @@ try {
 }
 
 const ReactiveModule = buildModule("ReactiveModule", (m) => {
-    const approvalService: string = deployedAddresses["ApprovalServiceModule#ApprovalService"];
-    const destinationChainId: number = 11155111;
+    const approvalService = deployedAddresses["ApprovalServiceTokensModule#ApprovalService"];
+    const destinationChainId = 11155111;
 
     if (!approvalService) {
         throw new Error(

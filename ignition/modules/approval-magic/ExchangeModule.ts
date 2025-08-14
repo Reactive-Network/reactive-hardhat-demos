@@ -24,10 +24,10 @@ try {
 }
 
 const ExchangeModule = buildModule("ExchangeModule", (m) => {
-    const approvalService = deployedAddresses["ApprovalServiceModule#ApprovalService"];
-    const token = deployedAddresses["ApprovalDemoTokenModule#ApprovalDemoToken"];
+    const approvalService = deployedAddresses["ApprovalServiceTokensModule#ApprovalService"];
+    const exchangeToken = deployedAddresses["ApprovalServiceTokensModule#ExchangeToken"];
 
-    if (!approvalService || !token) {
+    if (!approvalService || !exchangeToken) {
         throw new Error(
             "Required deployed contract addresses not found in deployed_addresses.json"
         );
@@ -35,7 +35,7 @@ const ExchangeModule = buildModule("ExchangeModule", (m) => {
 
     const exchangeContract = m.contract(
         "ApprovalEthExch",
-        [approvalService, token],
+        [approvalService, exchangeToken],
         {
             value: 200000000000000n // 0.0002 ether
         }

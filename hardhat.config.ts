@@ -13,6 +13,7 @@ const config: HardhatUserConfig = {
       url: "https://ethereum-sepolia-rpc.publicnode.com",
       accounts: process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
       chainId: 11155111,
+      timeout: 120000, // 120 seconds
     },
     lasna: {
       url: "https://lasna-rpc.rnk.dev/",
