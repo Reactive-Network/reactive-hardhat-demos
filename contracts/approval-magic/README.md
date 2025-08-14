@@ -1,5 +1,7 @@
 
-
+```bash
+npx hardhat ignition deploy ./ignition/modules/approval-magic/SepoliaModule.ts --network sepolia
+```
 
 ```bash
 npx hardhat ignition deploy ./ignition/modules/approval-magic/ApprovalServiceTokensModule.ts --network sepolia
