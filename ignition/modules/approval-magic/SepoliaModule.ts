@@ -10,7 +10,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         "ApprovalService",
         [callbackProxy, subscriptionFee, gasCoefficient, extraGas],
         {
-            value: 2000000000000000n, // 0.002 ether
+            value: 20000000000000000n, // 0.02 ether
         }
     );
 
@@ -36,7 +36,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         "ApprovalEthExch",
         [approvalService, exchangeToken],
         {
-            value: 1000000000000000n, // 0.001 ether
+            value: 10000000000000000n, // 0.01 ether
             after: [approvalService, exchangeToken],
         }
     );
@@ -45,7 +45,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         "ApprovalMagicSwap",
         [approvalService, swapToken1, swapToken2],
         {
-            value: 1000000000000000n, // 0.001 ether
+            value: 10000000000000000n, // 0.01 ether
             after: [approvalService, swapToken1, swapToken2],
         }
     );
