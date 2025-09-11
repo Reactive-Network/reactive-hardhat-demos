@@ -30,7 +30,6 @@ async function main(): Promise<void> {
     }
 
     const [signer] = await ethers.getSigners();
-    console.log(`Using signer: ${await signer.getAddress()}`);
 
     const eoaWallet = process.env.EOA_WALLET;
     const wallet = eoaWallet ?? (await signer.getAddress());
