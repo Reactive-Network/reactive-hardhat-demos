@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 import fs from "fs";
 import path from "path";
+import "dotenv/config";
 
 interface DeployedAddresses {
     [key: string]: string;
@@ -23,7 +24,6 @@ async function main(): Promise<void> {
     const callback = addresses["StopOrderSepoliaModule#Callback"];
     const token0 = addresses["StopOrderSepoliaModule#Token0"];
     const uniswapPair = addresses["StopOrderSepoliaModule#UniswapV2Pair"];
-    const clientWallet = "0xA7D9AA89cbcd216900a04Cdc13eB5789D643176a";
 
     if (!callback || !token0 || !uniswapPair) {
         throw new Error("Required contract addresses are missing");
@@ -31,6 +31,13 @@ async function main(): Promise<void> {
 
     const [signer] = await ethers.getSigners();
     console.log(`Using signer: ${await signer.getAddress()}`);
+
+    const eoaWallet = process.env.EOA_WALLET;
+    const wallet = eoaWallet ?? (await signer.getAddress());
+    if (!ethers.isAddress(wallet)) {
+        throw new Error(`Invalid recipient address: ${wallet}`);
+    }
+    console.log(`Recipient (swap 'to'): ${wallet}`);
 
     const erc20Abi = [
         "function approve(address spender, uint256 amount) external returns (bool)",
@@ -55,7 +62,7 @@ async function main(): Promise<void> {
     const amount0Out = 0n;
     const amount1Out = ethers.parseUnits("0.005", 18);
     console.log(`Swapping: amount0Out=${amount0Out}, amount1Out=${amount1Out}...`);
-    const swapTx = await pairContract.swap(amount0Out, amount1Out, clientWallet, "0x");
+    const swapTx = await pairContract.swap(amount0Out, amount1Out, wallet, "0x");
     await swapTx.wait();
     console.log("Swap complete");
 }

@@ -1,6 +1,7 @@
 import { ethers } from "hardhat";
 import fs from "fs";
 import path from "path";
+import "dotenv/config";
 
 interface DeployedAddresses {
     [key: string]: string;
@@ -23,14 +24,20 @@ async function main(): Promise<void> {
     const token0 = addresses["StopOrderSepoliaModule#Token0"];
     const token1 = addresses["StopOrderSepoliaModule#Token1"];
     const uniswapFactory = "0x7E0987E5b3a30e3f2828572Bb659A548460a3003";
-    const clientWallet = "0xA7D9AA89cbcd216900a04Cdc13eB5789D643176a";
 
     if (!token0 || !token1) {
         throw new Error("Required token addresses are missing");
     }
 
     const [signer] = await ethers.getSigners();
-    console.log(`Using signer: ${await signer.getAddress()}`);
+    const eoaWallet = process.env.EOA_WALLET;
+    const wallet = eoaWallet ?? await signer.getAddress();
+
+    if (!ethers.isAddress(wallet)) {
+        throw new Error(`Invalid recipient address for minting: ${wallet}`);
+    }
+
+    console.log(`LP recipient: ${wallet}`);
 
     const factoryAbi = [
         "function createPair(address tokenA, address tokenB) external returns (address pair)",
@@ -78,8 +85,8 @@ async function main(): Promise<void> {
     await (await token1Contract.transfer(pairAddress, amount)).wait();
 
     const pair = new ethers.Contract(pairAddress, pairAbi, signer);
-    console.log(`Minting LP tokens to ${clientWallet}...`);
-    const mintTx = await pair.mint(clientWallet);
+    console.log(`Minting LP tokens to ${wallet}...`);
+    const mintTx = await pair.mint(wallet);
     const mintReceipt = await mintTx.wait();
 
     console.log("Mint complete, tx:", mintReceipt?.hash);
