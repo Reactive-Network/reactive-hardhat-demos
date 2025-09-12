@@ -1,6 +1,8 @@
 import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 import fs from "fs";
 import path from "path";
+import "dotenv/config";
+import { ethers } from "ethers";
 
 const addressesPath = path.resolve(
     __dirname,
@@ -26,7 +28,16 @@ try {
 const StopOrderReactiveModule = buildModule("StopOrderReactiveModule", (m) => {
     const pair = deployedAddresses["StopOrderSepoliaModule#UniswapV2Pair"];
     const callback = deployedAddresses["StopOrderSepoliaModule#Callback"];
-    const clientWallet = "0xA7D9AA89cbcd216900a04Cdc13eB5789D643176a";
+
+    const clientWallet = process.env.EOA_WALLET;
+
+    if (!clientWallet) {
+        throw new Error("EOA_WALLET is not set in the environment (.env)");
+    }
+    if (!ethers.isAddress(clientWallet)) {
+        throw new Error(`EOA_WALLET is not a valid address: ${clientWallet}`);
+    }
+
     const direction = true;
     const denominator = 1000;
     const numerator = 1234;
