@@ -14,7 +14,7 @@ Deploy `BasicCronContract`. In our module, we subscribe to `Cron10`.
 npx hardhat ignition deploy ./ignition/modules/cron/CronDemoModule.ts --network lasna
 ```
 
-### Step 2 — Cron Pause (Optional)
+### Step 2 — Cron Pause
 
 To pause the contract:
 

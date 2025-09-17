@@ -46,3 +46,4 @@ or add a `--reset` flag when run a module to Sepolia and Lasna:
 
 ```bash
 npx hardhat ignition deploy $PATH --network $NETWORK --reset
+```

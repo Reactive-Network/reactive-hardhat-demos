@@ -38,7 +38,7 @@ Should you need to run the demo anew, remove the old deployment data before star
 rm -rf ignition/deployments/chain-{11155111,5318007}
 ```
 
-or add a `--reset` flag when run a module to Sepolia and Lasna:
+or add a `--reset` flag when run a module to Sepolia or Lasna:
 
 ```bash
 npx hardhat ignition deploy $PATH --network $NETWORK --reset
