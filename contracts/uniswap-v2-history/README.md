@@ -14,6 +14,16 @@ Deploy the callback contract to Sepolia:
 npx hardhat ignition deploy ./ignition/modules/uniswap-v2-history/UniswapHistoryL1Module.ts --network sepolia
 ```
 
+> ℹ️ **Nonce Issue**
+>
+> When encounter an error like:
+>
+> ```
+> IGN405: The next nonce for <your wallet> should be X, but is X + 1
+> ```
+>
+> wait 30 seconds and run the same deployment command again.
+
 ### Step 2 — Deploy to Reactive
 
 Deploy the reactive contract to Lasna:

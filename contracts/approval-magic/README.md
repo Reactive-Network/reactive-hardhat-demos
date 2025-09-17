@@ -22,7 +22,7 @@ npx hardhat ignition deploy ./ignition/modules/approval-magic/SepoliaModule.ts -
 > IGN405: The next nonce for <your wallet> should be X, but is X + 1
 > ```
 >  
-> wait 30 seconds and run the same deployment command again .
+> wait 30 seconds and run the same deployment command again.
 
 ### Step 2 — Deploy to Reactive
 
