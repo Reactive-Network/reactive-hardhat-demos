@@ -9,6 +9,7 @@ const OriginCallbackModule = buildModule("OriginCallbackModule", (m) => {
         [callbackSender],
         {
             value: 20000000000000000n, // 0.02 ETH
+            after: [originContract],
         }
     );
 
