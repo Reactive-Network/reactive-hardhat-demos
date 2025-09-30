@@ -35,8 +35,6 @@ npx hardhat ignition deploy ./ignition/modules/approval-magic/ReactiveModule.ts 
 
 ### Step 3 — Uniswap Pool
 
-Make sure `EOA_WALLET` is present in `reactive-hardhat-demos/.env`
-
 ```bash
 npx hardhat run scripts/approval-magic/createPair.ts --network sepolia
 ```
@@ -49,13 +47,7 @@ npx hardhat run scripts/approval-magic/subscribeApprove.ts --network sepolia
 
 ### Hardhat Reset
 
-Should you need to run the demo anew, remove the old deployment data before starting over:
-
-```bash
-rm -rf ignition/deployments/chain-{11155111,5318007}
-```
-
-or add a `--reset` flag when run a module to Sepolia or Lasna:
+To run the demo anew, add a `--reset` flag when run a module to Sepolia or Lasna:
 
 ```bash
 npx hardhat ignition deploy $PATH --network $NETWORK --reset

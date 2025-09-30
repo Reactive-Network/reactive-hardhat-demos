@@ -11,7 +11,10 @@ const StopOrderSepoliaModule = buildModule("StopOrderSepoliaModule", (m) => {
     const token1 = m.contract(
         "UniswapDemoToken",
         ["TK1", "TK1"],
-        { id: "Token1" }
+        {
+            id: "Token1",
+            after: [token0],
+        }
     );
 
     const callbackProxy = "0xc9f36411C9897e7F959D99ffca2a0Ba7ee0D7bDA";
@@ -23,6 +26,7 @@ const StopOrderSepoliaModule = buildModule("StopOrderSepoliaModule", (m) => {
         {
             id: "Callback",
             value: 20000000000000000n, // 0.02 ether
+            after: [token1],
         }
     );
 
