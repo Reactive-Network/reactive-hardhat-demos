@@ -17,19 +17,28 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
     const exchangeToken = m.contract(
         "ApprovalDemoToken",
         ["FTW", "FTW"],
-        { id: "ExchangeToken" }
+        {
+            id: "ExchangeToken",
+            after: [approvalService],
+        }
     );
 
     const swapToken1 = m.contract(
         "ApprovalDemoToken",
         ["TK1", "TK1"],
-        { id: "SwapToken1" }
+        {
+            id: "SwapToken1",
+            after: [exchangeToken],
+        }
     );
 
     const swapToken2 = m.contract(
         "ApprovalDemoToken",
         ["TK2", "TK2"],
-        { id: "SwapToken2" }
+        {
+            id: "SwapToken2",
+            after: [swapToken1],
+        }
     );
 
     const exchangeContract = m.contract(
@@ -37,7 +46,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         [approvalService, exchangeToken],
         {
             value: 10000000000000000n, // 0.01 ether
-            after: [approvalService, exchangeToken],
+            after: [swapToken2],
         }
     );
 
@@ -46,7 +55,7 @@ const SepoliaModule = buildModule("SepoliaModule", (m) => {
         [approvalService, swapToken1, swapToken2],
         {
             value: 10000000000000000n, // 0.01 ether
-            after: [approvalService, swapToken1, swapToken2],
+            after: [exchangeContract],
         }
     );
 
