@@ -3,6 +3,7 @@
 Before proceeding further, add the private key to the `.env` file:
 
 ```env
+EOA_WALLET=<insert EOA wallet address>
 PRIVATE_KEY=<insert private key>
 ```
 

@@ -3,6 +3,7 @@
 Before proceeding further, add the private key to the `.env` file:
 
 ```env
+EOA_WALLET=<insert EOA wallet address>
 PRIVATE_KEY=<insert private key>
 ```
 
@@ -13,16 +14,6 @@ Deploy the callback contract to Sepolia:
 ```bash
 npx hardhat ignition deploy ./ignition/modules/erc20-turnovers/TokenTurnoverL1Module.ts --network sepolia
 ```
-
-> ℹ️ **Nonce Issue**
->
-> When encounter an error like:
->
-> ```
-> IGN405: The next nonce for <your wallet> should be X, but is X + 1
-> ```
->
-> wait 30 seconds and run the same deployment command again.
 
 ### Step 2 — Deploy to Reactive
 
@@ -56,13 +47,7 @@ npx hardhat run scripts/erc20-turnovers/resumeTurnoverReactive.ts --network lasn
 
 ### Hardhat Reset
 
-Should you need to run the demo anew, remove the old deployment data before starting over:
-
-```bash
-rm -rf ignition/deployments/chain-{11155111,5318007}
-```
-
-or add a `--reset` flag when run a module to Sepolia or Lasna:
+To run the demo anew, add a `--reset` flag when run a module to Sepolia or Lasna:
 
 ```bash
 npx hardhat ignition deploy $PATH --network $NETWORK --reset
