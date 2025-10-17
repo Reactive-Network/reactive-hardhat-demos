@@ -2,4 +2,4 @@
 yarn install
 ```
 
-Add .env to reactive-hardhat-demos/ for storing the EOA wallet address and its private key
+Add a `.env` file to reactive-hardhat-demos/ for storing your EOA wallet address and private key
