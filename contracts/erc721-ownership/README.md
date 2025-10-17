@@ -1,15 +1,14 @@
 ## Deployment & Testing
 
-Before proceeding further, add the EOA wallet address and private key to the `.env` file:
+Before proceeding further, add the private key to the `.env` file:
 
 ```env
-EOA_WALLET=<insert EOA wallet address>
 PRIVATE_KEY=<insert private key>
 ```
 
 ### Step 1 — Deploy to Sepolia
 
-Deploy the callback contract to Sepolia:
+Deploy the callback contract to Ethereum Sepolia:
 
 ```bash
 npx hardhat ignition deploy ./ignition/modules/erc721-ownership/NftOwnershipL1Module.ts --network sepolia
@@ -17,7 +16,7 @@ npx hardhat ignition deploy ./ignition/modules/erc721-ownership/NftOwnershipL1Mo
 
 ### Step 2 — Deploy to Reactive
 
-Deploy the reactive contract to Lasna:
+Deploy the reactive contract to Reactive Lasna:
 
 ```bash
 npx hardhat ignition deploy ./ignition/modules/erc721-ownership/NftOwnershipReactiveModule.ts --network lasna
@@ -25,7 +24,7 @@ npx hardhat ignition deploy ./ignition/modules/erc721-ownership/NftOwnershipReac
 
 ### Step 3 — Request Ownership
 
-Request the NFT ownership (should result in a callback to Sepolia):
+Request the NFT ownership. This should result in a callback to Ethereum Sepolia:
 
 ```bash
 npx hardhat run scripts/erc721-ownership/requestOwnership.ts --network sepolia
@@ -47,7 +46,7 @@ npx hardhat run scripts/erc721-ownership/resumeOwnershipReactive.ts --network la
 
 ### Hardhat Reset
 
-To run the demo anew, add a `--reset` flag when run a module to Sepolia or Lasna:
+To run the demo anew, add a `--reset` flag when run a module to Ethereum Sepolia or Reactive Lasna:
 
 ```bash
 npx hardhat ignition deploy $PATH --network $NETWORK --reset
