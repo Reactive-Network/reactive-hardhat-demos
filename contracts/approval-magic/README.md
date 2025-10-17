@@ -1,6 +1,6 @@
 ## Deployment & Testing
 
-Before proceeding further, add the private key to the `.env` file:
+Before proceeding further, add the EOA wallet address and private key to the `.env` file:
 
 ```env
 EOA_WALLET=<insert EOA wallet address>
